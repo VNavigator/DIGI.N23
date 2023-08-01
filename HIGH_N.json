@@ -1,0 +1,636 @@
+﻿{
+  "WatchFace_Info": {
+    "DeviceName": "GTR3",
+    "WatchFaceId": 6035142,
+    "Preview": "preview"
+  },
+  "ScreenNormal": {
+    "Background": {
+      "visible": true,
+      "BackgroundImage": {
+        "position": -1,
+        "visible": false,
+        "show_level": "",
+        "x": 0,
+        "y": 0,
+        "w": 454,
+        "h": 454,
+        "src": "0010"
+      },
+      "Editable_Background": {
+        "enable_edit_bg": false,
+        "selected_background": 3,
+        "x": 0,
+        "y": 0,
+        "h": 454,
+        "w": 454,
+        "BackgroundList": [
+          {
+            "path": "0010",
+            "preview": ""
+          },
+          {
+            "path": "0011",
+            "preview": ""
+          },
+          {
+            "path": "0012",
+            "preview": ""
+          },
+          {
+            "path": "0013",
+            "preview": ""
+          }
+        ],
+        "tips_bg": "",
+        "tips_x": 0,
+        "tips_y": 0,
+        "fg": "0009",
+        "AOD_show": false,
+        "showEeditMode": true
+      }
+    },
+    "Elements": [
+      {
+        "elementName": "ElementSteps",
+        "visible": true,
+        "Images": {
+          "position": 12,
+          "visible": false,
+          "show_level": "",
+          "X": 0,
+          "Y": 0,
+          "image_length": 0
+        },
+        "Segments": {
+          "position": 11,
+          "visible": false,
+          "show_level": "",
+          "image_length": 0
+        },
+        "Number": {
+          "position": 10,
+          "visible": false,
+          "align": "LEFT",
+          "show_level": "",
+          "imageX": 0,
+          "imageY": 0,
+          "space": 0,
+          "zero": false,
+          "iconPosX": 0,
+          "iconPosY": 0,
+          "angle": 0,
+          "follow": false,
+          "unit_in_alignment": false
+        },
+        "Text_rotation": {
+          "position": 9,
+          "visible": false,
+          "align": "LEFT",
+          "show_level": "",
+          "imageX": 0,
+          "imageY": 0,
+          "space": 0,
+          "zero": false,
+          "iconPosX": 0,
+          "iconPosY": 0,
+          "angle": 0,
+          "follow": false,
+          "unit_in_alignment": false
+        },
+        "Text_circle": {
+          "position": 8,
+          "visible": false,
+          "show_level": "",
+          "circle_center_X": 0,
+          "circle_center_Y": 0,
+          "radius": 100,
+          "angle": 0,
+          "char_space_angle": 0,
+          "zero": false,
+          "vertical_alignment": "BOTTOM",
+          "horizontal_alignment": "LEFT",
+          "reverse_direction": false,
+          "unit_in_alignment": true
+        },
+        "Number_Target": {
+          "position": 7,
+          "visible": false,
+          "align": "LEFT",
+          "show_level": "",
+          "imageX": 0,
+          "imageY": 0,
+          "space": 0,
+          "zero": false,
+          "iconPosX": 0,
+          "iconPosY": 0,
+          "angle": 0,
+          "follow": false,
+          "unit_in_alignment": false
+        },
+        "Text_rotation_Target": {
+          "position": 6,
+          "visible": false,
+          "align": "LEFT",
+          "show_level": "",
+          "imageX": 0,
+          "imageY": 0,
+          "space": 0,
+          "zero": false,
+          "iconPosX": 0,
+          "iconPosY": 0,
+          "angle": 0,
+          "follow": false,
+          "unit_in_alignment": false
+        },
+        "Text_circle_Target": {
+          "position": 5,
+          "visible": false,
+          "show_level": "",
+          "circle_center_X": 0,
+          "circle_center_Y": 0,
+          "radius": 100,
+          "angle": 0,
+          "char_space_angle": 0,
+          "zero": false,
+          "vertical_alignment": "BOTTOM",
+          "horizontal_alignment": "LEFT",
+          "reverse_direction": false,
+          "unit_in_alignment": true
+        },
+        "Pointer": {
+          "position": 4,
+          "visible": true,
+          "show_level": "",
+          "src": "0001",
+          "center_x": 226,
+          "center_y": 341,
+          "pos_x": 16,
+          "pos_y": 71,
+          "start_angle": -119,
+          "end_angle": 120,
+          "cover_path": "",
+          "cover_x": 0,
+          "cover_y": 0,
+          "scale": "",
+          "scale_x": 0,
+          "scale_y": 0
+        },
+        "Circle_Scale": {
+          "position": 3,
+          "visible": false,
+          "end_angle": 180,
+          "show_level": "",
+          "center_x": 0,
+          "center_y": 0,
+          "start_angle": 0,
+          "color": "0xFFFF8C00",
+          "radius": 100,
+          "line_width": 5,
+          "line_cap": "Rounded",
+          "mirror": false,
+          "inversion": false
+        },
+        "Linear_Scale": {
+          "position": 2,
+          "visible": false,
+          "show_level": "",
+          "start_x": 0,
+          "start_y": 0,
+          "color": "0xFFFF8C00",
+          "lenght": 100,
+          "line_width": 5,
+          "line_cap": "Flat",
+          "mirror": false,
+          "inversion": false,
+          "vertical": false
+        },
+        "Icon": {
+          "position": 1,
+          "visible": false,
+          "show_level": "",
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "elementName": "ElementImage",
+        "visible": true,
+        "Icon": {
+          "position": 1,
+          "visible": true,
+          "show_level": "",
+          "x": 0,
+          "y": 0,
+          "src": "0008"
+        }
+      },
+      {
+        "elementName": "ElementHeart",
+        "visible": true,
+        "Images": {
+          "position": 9,
+          "visible": false,
+          "show_level": "",
+          "X": 0,
+          "Y": 0,
+          "image_length": 0
+        },
+        "Segments": {
+          "position": 8,
+          "visible": false,
+          "show_level": "",
+          "image_length": 0
+        },
+        "Number": {
+          "position": 7,
+          "visible": false,
+          "align": "LEFT",
+          "show_level": "",
+          "imageX": 0,
+          "imageY": 0,
+          "space": 0,
+          "zero": false,
+          "iconPosX": 0,
+          "iconPosY": 0,
+          "angle": 0,
+          "follow": false,
+          "unit_in_alignment": false
+        },
+        "Text_rotation": {
+          "position": 6,
+          "visible": false,
+          "align": "LEFT",
+          "show_level": "",
+          "imageX": 0,
+          "imageY": 0,
+          "space": 0,
+          "zero": false,
+          "iconPosX": 0,
+          "iconPosY": 0,
+          "angle": 0,
+          "follow": false,
+          "unit_in_alignment": false
+        },
+        "Text_circle": {
+          "position": 5,
+          "visible": false,
+          "show_level": "",
+          "circle_center_X": 0,
+          "circle_center_Y": 0,
+          "radius": 100,
+          "angle": 0,
+          "char_space_angle": 0,
+          "zero": false,
+          "vertical_alignment": "BOTTOM",
+          "horizontal_alignment": "LEFT",
+          "reverse_direction": false,
+          "unit_in_alignment": true
+        },
+        "Pointer": {
+          "position": 4,
+          "visible": true,
+          "show_level": "",
+          "src": "0002",
+          "center_x": 130,
+          "center_y": 227,
+          "pos_x": 15,
+          "pos_y": 71,
+          "start_angle": -31,
+          "end_angle": 209,
+          "cover_path": "",
+          "cover_x": 0,
+          "cover_y": 0,
+          "scale": "",
+          "scale_x": 0,
+          "scale_y": 0
+        },
+        "Circle_Scale": {
+          "position": 3,
+          "visible": false,
+          "end_angle": 180,
+          "show_level": "",
+          "center_x": 0,
+          "center_y": 0,
+          "start_angle": 0,
+          "color": "0xFFFF8C00",
+          "radius": 100,
+          "line_width": 5,
+          "line_cap": "Rounded",
+          "mirror": false,
+          "inversion": false
+        },
+        "Linear_Scale": {
+          "position": 2,
+          "visible": false,
+          "show_level": "",
+          "start_x": 0,
+          "start_y": 0,
+          "color": "0xFFFF8C00",
+          "lenght": 100,
+          "line_width": 5,
+          "line_cap": "Flat",
+          "mirror": false,
+          "inversion": false,
+          "vertical": false
+        },
+        "Icon": {
+          "position": 1,
+          "visible": false,
+          "show_level": "",
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "elementName": "ElementBattery",
+        "visible": true,
+        "Images": {
+          "position": 9,
+          "visible": false,
+          "show_level": "",
+          "X": 0,
+          "Y": 0,
+          "image_length": 0
+        },
+        "Segments": {
+          "position": 8,
+          "visible": false,
+          "show_level": "",
+          "image_length": 0
+        },
+        "Number": {
+          "position": 7,
+          "visible": false,
+          "align": "LEFT",
+          "show_level": "",
+          "imageX": 0,
+          "imageY": 0,
+          "space": 0,
+          "zero": false,
+          "iconPosX": 0,
+          "iconPosY": 0,
+          "angle": 0,
+          "follow": false,
+          "unit_in_alignment": false
+        },
+        "Text_rotation": {
+          "position": 6,
+          "visible": false,
+          "align": "LEFT",
+          "show_level": "",
+          "imageX": 0,
+          "imageY": 0,
+          "space": 0,
+          "zero": false,
+          "iconPosX": 0,
+          "iconPosY": 0,
+          "angle": 0,
+          "follow": false,
+          "unit_in_alignment": false
+        },
+        "Text_circle": {
+          "position": 5,
+          "visible": false,
+          "show_level": "",
+          "circle_center_X": 0,
+          "circle_center_Y": 0,
+          "radius": 100,
+          "angle": 0,
+          "char_space_angle": 0,
+          "zero": false,
+          "vertical_alignment": "BOTTOM",
+          "horizontal_alignment": "LEFT",
+          "reverse_direction": false,
+          "unit_in_alignment": true
+        },
+        "Pointer": {
+          "position": 4,
+          "visible": true,
+          "show_level": "",
+          "src": "0002",
+          "center_x": 322,
+          "center_y": 228,
+          "pos_x": 15,
+          "pos_y": 71,
+          "start_angle": -212,
+          "end_angle": 30,
+          "cover_path": "",
+          "cover_x": 0,
+          "cover_y": 0,
+          "scale": "",
+          "scale_x": 0,
+          "scale_y": 0
+        },
+        "Circle_Scale": {
+          "position": 3,
+          "visible": false,
+          "end_angle": 180,
+          "show_level": "",
+          "center_x": 0,
+          "center_y": 0,
+          "start_angle": 0,
+          "color": "0xFFFF8C00",
+          "radius": 100,
+          "line_width": 5,
+          "line_cap": "Rounded",
+          "mirror": false,
+          "inversion": false
+        },
+        "Linear_Scale": {
+          "position": 2,
+          "visible": false,
+          "show_level": "",
+          "start_x": 0,
+          "start_y": 0,
+          "color": "0xFFFF8C00",
+          "lenght": 100,
+          "line_width": 5,
+          "line_cap": "Flat",
+          "mirror": false,
+          "inversion": false,
+          "vertical": false
+        },
+        "Icon": {
+          "position": 1,
+          "visible": false,
+          "show_level": "",
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "elementName": "AnalogTime",
+        "visible": true,
+        "show_level": "",
+        "Second": {
+          "position": 3,
+          "visible": true,
+          "show_level": "",
+          "src": "0004",
+          "center_x": 227,
+          "center_y": 227,
+          "pos_x": 22,
+          "pos_y": 226,
+          "start_angle": 0,
+          "end_angle": 360,
+          "cover_path": "",
+          "cover_x": 0,
+          "cover_y": 0,
+          "scale": "",
+          "scale_x": 0,
+          "scale_y": 0
+        },
+        "Minute": {
+          "position": 2,
+          "visible": true,
+          "show_level": "",
+          "src": "0005",
+          "center_x": 227,
+          "center_y": 227,
+          "pos_x": 22,
+          "pos_y": 227,
+          "start_angle": 0,
+          "end_angle": 360,
+          "cover_path": "",
+          "cover_x": 0,
+          "cover_y": 0,
+          "scale": "",
+          "scale_x": 0,
+          "scale_y": 0
+        },
+        "Hour": {
+          "position": 1,
+          "visible": true,
+          "show_level": "",
+          "src": "0006",
+          "center_x": 227,
+          "center_y": 227,
+          "pos_x": 22,
+          "pos_y": 227,
+          "start_angle": 0,
+          "end_angle": 360,
+          "cover_path": "",
+          "cover_x": 0,
+          "cover_y": 0,
+          "scale": "",
+          "scale_x": 0,
+          "scale_y": 0
+        }
+      }
+    ]
+  },
+  "Shortcuts": {
+    "elementName": "ElementShortcuts",
+    "visible": true,
+    "Step": {
+      "position": 12,
+      "visible": false,
+      "show_level": "",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100
+    },
+    "Heart": {
+      "position": 11,
+      "visible": true,
+      "show_level": "",
+      "x": 82,
+      "y": 180,
+      "w": 96,
+      "h": 96,
+      "src": "btn"
+    },
+    "SPO2": {
+      "position": 10,
+      "visible": false,
+      "show_level": "",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100
+    },
+    "PAI": {
+      "position": 9,
+      "visible": false,
+      "show_level": "",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100
+    },
+    "Stress": {
+      "position": 8,
+      "visible": false,
+      "show_level": "",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100
+    },
+    "Weather": {
+      "position": 7,
+      "visible": false,
+      "show_level": "",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100
+    },
+    "Altimeter": {
+      "position": 6,
+      "visible": false,
+      "show_level": "",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100
+    },
+    "Sunrise": {
+      "position": 5,
+      "visible": false,
+      "show_level": "",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100
+    },
+    "Alarm": {
+      "position": 4,
+      "visible": false,
+      "show_level": "",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100
+    },
+    "Sleep": {
+      "position": 3,
+      "visible": false,
+      "show_level": "",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100
+    },
+    "Countdown": {
+      "position": 2,
+      "visible": false,
+      "show_level": "",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100
+    },
+    "Stopwatch": {
+      "position": 1,
+      "visible": false,
+      "show_level": "",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "configVersion": "v2",
+  "app": {
+    "appId": 20289,
+    "appName": "HIGH_N.23",
+    "appType": "watchface",
+    "version": {
+      "code": 1,
+      "name": "1.0.1"
+    },
+    "icon": "Preview.png",
+    "vender": "zepp",
+    "description": "Amazfit port from Facer https://www.facer.io/watchface/HmFQUQFqHm?watchModel=galaxywatch4black"
+  },
+  "permissions": ["gps","screen"],
+  "runtime": {
+    "apiVersion": {
+      "compatible": "1.0.0",
+      "target": "1.0.1",
+      "minVersion": "1.0.0"
+    }
+  },
+  "targets": {
+    "gtr-3": {
+      "module": {
+        "watchface": {
+          "path": "watchface/index",
+          "main": 1,
+          "editable": 0,
+          "lockscreen": 0,
+          "photoscreen": 0
+        }
+      },
+      "platforms": [
+        {
+          "name": "gtr3",
+          "deviceSource": 226
+        },
+        {
+          "name": "gtr3-w",
+          "deviceSource": 227
+        },
+        {
+          "name": "t-rex2",
+          "deviceSource": 418
+        },
+        {
+          "name": "t-rex2-w",
+          "deviceSource": 419
+        }
+      ],
+      "designWidth": 454
+      }
+    },
+    "i18n": {
+    "en-US": {
+      "appName": "HIGH N.23"
+    },
+    "uk-UA": {
+      "appName": "HIGH N.23"
+    }
+    
+  },
+  "defaultLanguage": "en-US"
+}
