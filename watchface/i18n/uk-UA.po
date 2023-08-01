@@ -1,2 +1,2 @@
-msgid "example"
-msgstr "This is an example in device"
+msgid "description"
+msgstr "Amazfit порт з Facer https://www.facer.io/watchface/HmFQUQFqHm?watchModel=galaxywatch4black"

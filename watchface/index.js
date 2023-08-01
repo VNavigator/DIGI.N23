@@ -3,13 +3,22 @@ import { gettext } from 'i18n'
 let normal_bg_img = ''
 let normal_date_img_date_day = ''
 let normal_date_img_date_month_img = ''
-let normal_step_pointer_progress_img_pointer = ''
+let normal_step_pointer_progress_img_pointerA = ''
+let normal_step_pointer_progress_img_pointerB = ''
+let normal_step_pointer_progress_img_pointerC = ''
+let normal_step_pointer_progress_img_pointerD = ''
+let normal_heart_rate_pointer_progress_img_pointerA = ''
+let normal_heart_rate_pointer_progress_img_pointerB = ''
+let normal_heart_rate_pointer_progress_img_pointerC = ''
+let normal_heart_rate_pointer_progress_img_pointerD = ''
+let normal_battery_pointer_progress_img_pointerA = ''
+let normal_battery_pointer_progress_img_pointerB = ''
+let normal_battery_pointer_progress_img_pointerC = ''
+let normal_battery_pointer_progress_img_pointerD = ''
 let normal_step_current_text_img = ''
-let normal_image_img = ''
-let normal_heart_rate_pointer_progress_img_pointer = ''
 let normal_heart_rate_text_text_img = ''
-let normal_battery_pointer_progress_img_pointer = ''
 let normal_battery_text_text_img = ''
+let normal_image_img = ''
 let normal_analog_clock_pro_hour_pointer_img = ''
 let normal_analog_clock_pro_minute_pointer_img = ''
 let normal_timerUpdateSec = undefined;
@@ -101,8 +110,8 @@ WatchFace({
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
-    normal_step_pointer_progress_img_pointer = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
-      src: big_point_array[skin_number],
+    normal_step_pointer_progress_img_pointerA = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
+      src: big_point_array[0],
       center_x: 226,
       center_y: 341,
       x: 16,
@@ -110,6 +119,155 @@ WatchFace({
       start_angle: -119,
       end_angle: 120,
       type: hmUI.data_type.STEP,
+      show_level: hmUI.show_level.ONLY_NORMAL,
+    });
+
+    normal_step_pointer_progress_img_pointerB = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
+      src: big_point_array[1],
+      center_x: 226,
+      center_y: 341,
+      x: 16,
+      y: 71,
+      start_angle: -119,
+      end_angle: 120,
+      type: hmUI.data_type.STEP,
+      show_level: hmUI.show_level.ONLY_NORMAL,
+    });
+
+    normal_step_pointer_progress_img_pointerC = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
+      src: big_point_array[2],
+      center_x: 226,
+      center_y: 341,
+      x: 16,
+      y: 71,
+      start_angle: -119,
+      end_angle: 120,
+      type: hmUI.data_type.STEP,
+      show_level: hmUI.show_level.ONLY_NORMAL,
+    });
+
+    normal_step_pointer_progress_img_pointerD = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
+      src: big_point_array[0],
+      center_x: 226,
+      center_y: 341,
+      x: 16,
+      y: 71,
+      start_angle: -119,
+      end_angle: 120,
+      type: hmUI.data_type.STEP,
+      show_level: hmUI.show_level.ONLY_NORMAL,
+    });
+
+    normal_heart_rate_pointer_progress_img_pointerA = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
+      src: small_point_array[0],
+      center_x: 130,
+      center_y: 227,
+      x: 15,
+      y: 71,
+      start_angle: -31,
+      end_angle: 209,
+      type: hmUI.data_type.HEART,
+      show_level: hmUI.show_level.ONLY_NORMAL,
+    });
+
+    normal_heart_rate_pointer_progress_img_pointerB = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
+      src: small_point_array[1],
+      center_x: 130,
+      center_y: 227,
+      x: 15,
+      y: 71,
+      start_angle: -31,
+      end_angle: 209,
+      type: hmUI.data_type.HEART,
+      show_level: hmUI.show_level.ONLY_NORMAL,
+    });
+
+    normal_heart_rate_pointer_progress_img_pointerC = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
+      src: small_point_array[2],
+      center_x: 130,
+      center_y: 227,
+      x: 15,
+      y: 71,
+      start_angle: -31,
+      end_angle: 209,
+      type: hmUI.data_type.HEART,
+      show_level: hmUI.show_level.ONLY_NORMAL,
+    });
+
+    normal_heart_rate_pointer_progress_img_pointerD = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
+      src: small_point_array[3],
+      center_x: 130,
+      center_y: 227,
+      x: 15,
+      y: 71,
+      start_angle: -31,
+      end_angle: 209,
+      type: hmUI.data_type.HEART,
+      show_level: hmUI.show_level.ONLY_NORMAL,
+    });
+
+    normal_battery_pointer_progress_img_pointerA = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
+      src: small_point_array[0],
+      center_x: 322,
+      center_y: 228,
+      x: 15,
+      y: 71,
+      start_angle: -212,
+      end_angle: 30,
+      type: hmUI.data_type.BATTERY,
+      show_level: hmUI.show_level.ONLY_NORMAL,
+    });
+
+    normal_battery_pointer_progress_img_pointerB = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
+      src: small_point_array[1],
+      center_x: 322,
+      center_y: 228,
+      x: 15,
+      y: 71,
+      start_angle: -212,
+      end_angle: 30,
+      type: hmUI.data_type.BATTERY,
+      show_level: hmUI.show_level.ONLY_NORMAL,
+    });
+
+    normal_battery_pointer_progress_img_pointerC = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
+      src: small_point_array[2],
+      center_x: 322,
+      center_y: 228,
+      x: 15,
+      y: 71,
+      start_angle: -212,
+      end_angle: 30,
+      type: hmUI.data_type.BATTERY,
+      show_level: hmUI.show_level.ONLY_NORMAL,
+    });
+
+    function setVisibility(){
+      normal_step_pointer_progress_img_pointerA.setProperty(hmUI.prop.VISIBLE,skin_number==0);
+      normal_step_pointer_progress_img_pointerB.setProperty(hmUI.prop.VISIBLE,skin_number==1);
+      normal_step_pointer_progress_img_pointerC.setProperty(hmUI.prop.VISIBLE,skin_number==2);
+      normal_step_pointer_progress_img_pointerD.setProperty(hmUI.prop.VISIBLE,skin_number==3);
+      normal_heart_rate_pointer_progress_img_pointerA.setProperty(hmUI.prop.VISIBLE,skin_number==0);
+      normal_heart_rate_pointer_progress_img_pointerB.setProperty(hmUI.prop.VISIBLE,skin_number==1);
+      normal_heart_rate_pointer_progress_img_pointerC.setProperty(hmUI.prop.VISIBLE,skin_number==2);
+      normal_heart_rate_pointer_progress_img_pointerD.setProperty(hmUI.prop.VISIBLE,skin_number==3);
+      normal_battery_pointer_progress_img_pointerA.setProperty(hmUI.prop.VISIBLE,skin_number==0);
+      normal_battery_pointer_progress_img_pointerB.setProperty(hmUI.prop.VISIBLE,skin_number==1);
+      normal_battery_pointer_progress_img_pointerC.setProperty(hmUI.prop.VISIBLE,skin_number==2);
+      normal_battery_pointer_progress_img_pointerD.setProperty(hmUI.prop.VISIBLE,skin_number==3); 
+    }
+
+    setVisibility();
+
+    normal_battery_pointer_progress_img_pointerD = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
+      src: small_point_array[3],
+      center_x: 322,
+      center_y: 228,
+      x: 15,
+      y: 71,
+      start_angle: -212,
+      end_angle: 30,
+      type: hmUI.data_type.BATTERY,
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
@@ -124,18 +282,6 @@ WatchFace({
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
-    normal_heart_rate_pointer_progress_img_pointer = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
-      src: small_point_array[skin_number],
-      center_x: 130,
-      center_y: 227,
-      x: 15,
-      y: 71,
-      start_angle: -31,
-      end_angle: 209,
-      type: hmUI.data_type.HEART,
-      show_level: hmUI.show_level.ONLY_NORMAL,
-    });
-
     normal_heart_rate_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {
       x: 78,
       y: 218,
@@ -144,18 +290,6 @@ WatchFace({
       h_space: 0,
       align_h: hmUI.align.CENTER_H,
       type: hmUI.data_type.HEART,
-      show_level: hmUI.show_level.ONLY_NORMAL,
-    });
-
-    normal_battery_pointer_progress_img_pointer = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
-      src: small_point_array[skin_number],
-      center_x: 322,
-      center_y: 228,
-      x: 15,
-      y: 71,
-      start_angle: -212,
-      end_angle: 30,
-      type: hmUI.data_type.BATTERY,
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
@@ -275,11 +409,8 @@ WatchFace({
           skin_number = 0
         }
         hmFS.SysProGetInt('skin_number',skin_number);
-        
         normal_image_img.setProperty(hmUI.prop.SRC,bg_array[skin_number]);
-        normal_step_pointer_progress_img_pointer.setProperty(hmUI.prop.VISIBLE,false);
-        normal_heart_rate_pointer_progress_img_pointer.setProperty(hmUI.prop.VISIBLE,false);
-        normal_battery_pointer_progress_img_pointer.setProperty(hmUI.prop.VISIBLE,false);
+        setVisibility(); 
       }
     });
 
