@@ -277,9 +277,9 @@ WatchFace({
         hmFS.SysProGetInt('skin_number',skin_number);
         
         normal_image_img.setProperty(hmUI.prop.SRC,bg_array[skin_number]);
-        normal_step_pointer_progress_img_pointer.setProperty(hmUI.prop.MORE,{src:big_point_array[skin_number]});
-        normal_heart_rate_pointer_progress_img_pointer.setProperty(hmUI.prop.SRC,small_point_array[skin_number]);
-        normal_battery_pointer_progress_img_pointer.setProperty(hmUI.prop.SRC,small_point_array[skin_number]);
+        normal_step_pointer_progress_img_pointer.setProperty(hmUI.prop.VISIBLE,false);
+        normal_heart_rate_pointer_progress_img_pointer.setProperty(hmUI.prop.VISIBLE,false);
+        normal_battery_pointer_progress_img_pointer.setProperty(hmUI.prop.VISIBLE,false);
       }
     });
 
