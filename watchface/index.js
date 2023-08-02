@@ -24,15 +24,12 @@ let normal_timerUpdateSecSmooth = undefined;
 let lastTime = 0;
 let timeSensor = ''
 let second_pointer_mode = 0;
+let skin_number = 0;
 
 WatchFace({
   init_view() {
     
     const uk_UA = 18
-
-    const SM_SMOOTH = 0  // Smooth second, minute and hour pointer 
-    const SM_NORMAL = 1  // Normal/step second? minute and hour pointer
-    const SM_WITHOUT = 2 // Normal without second pointer p
 
     const small_digits_array = ["0014.png","0015.png","0016.png","0017.png","0018.png","0019.png","0020.png","0021.png","0022.png","0023.png"]
     const month_digits_array = ["0024.png","0025.png","0026.png","0027.png","0028.png","0029.png","0030.png","0031.png","0032.png","0033.png"]
@@ -42,13 +39,10 @@ WatchFace({
     const big_point_array = ['0001.png','0001b.png','0001c.png','0001d.png']
     const small_point_array = ['0003.png','0003b.png','0003c.png','0003d.png']
 
-    let skin_number = 0;
-     //0 - smooth, 1 - step, 2 - without
     skin_number = 0 + hmFS.SysProGetInt('skin_number');
     second_pointer_mode = 0 + hmFS.SysProGetInt('second_pointer_mode');
 
     if(skin_number<0 || skin_number>3) skin_number = 0;
-    skin_number = 0;
 
     let month_array = month_array_en;
     const language = hmSetting.getLanguage()
@@ -391,9 +385,6 @@ WatchFace({
 
 
     function setSecondVisibility(mode){
-      if(mode==0) hmUI.showToast({text: gettext('smooth')});
-      if(mode==1) hmUI.showToast({text: gettext('normal')});
-      if(mode==2) hmUI.showToast({text: gettext('without')});
       normal_analog_clock_pro_hour_pointer_imgS.setProperty(hmUI.prop.VISIBLE,mode==0);
       normal_analog_clock_pro_minute_pointer_imgS.setProperty(hmUI.prop.VISIBLE,mode==0);
       normal_analog_clock_pro_second_pointer_imgS.setProperty(hmUI.prop.VISIBLE,mode==0);
@@ -402,7 +393,7 @@ WatchFace({
       normal_analog_clock_second_pointer_imgN.setProperty(hmUI.prop.VISIBLE,mode==1);
     }
 
-    setSecondVisibility(0)
+    setSecondVisibility(second_pointer_mode)
 
     hmUI.createWidget(hmUI.widget.IMG_CLICK, {
       x: 86,
@@ -414,14 +405,36 @@ WatchFace({
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
-    hmUI.createWidget(hmUI.widget.IMG_CLICK, {
+    function showDialog(){
+      const dialog = hmUI.createDialog({
+        title: 'bluetooth',
+        auto_hide: false,
+        click_listener: ({ type }) => {
+          if(type==0){//cancel button
+            hmFS.SysProSetInt(ALARM_SENT,0)
+          }
+          if(type==1){//confirm button
+            hmFS.SysProSetInt(ALARM_SENT,1)
+          }
+          dialog.show(false)
+        }
+      })
+    
+      dialog.show(true)
+    }
+
+    hmUI.createWidget(hmUI.widget.BUTTON, {
       x: 277,
       y: 183,
       w: 90,
       h: 90,
-      src: 'btn.png',
-      type: hmUI.data_type.BATTERY,
+      text: '',
+      normal_src: 'btn.png',  // transparent image
+      press_src: 'btn.png',  // transparent image
       show_level: hmUI.show_level.ONLY_NORMAL,
+      click_func: () => {
+        showDialog()
+      }
     });
 
     hmUI.createWidget(hmUI.widget.BUTTON, {
@@ -435,7 +448,7 @@ WatchFace({
       show_level: hmUI.show_level.ONLY_NORMAL,
       click_func: () => {
         skin_number++;
-        if(skin_number<0 || skin_number>3) {
+        if(skin_number>3) {
           skin_number = 0
         }
         hmFS.SysProSetInt('skin_number',skin_number);
@@ -444,7 +457,29 @@ WatchFace({
       }
     });
 
-    let second_click_img = hmUI.createWidget(hmUI.widget.IMG, {
+    hmUI.createWidget(hmUI.widget.BUTTON, {
+      x: 203,  // x coordinate of the button
+      y: 203,  // y coordinate of the button
+      text: '',
+      w: 50,  // button width
+      h: 50,  // button height
+      normal_src: 'btn.png',  // transparent image
+      press_src: 'btn.png',  // transparent image
+      show_level: hmUI.show_level.ONLY_NORMAL,
+      click_func: () => {
+        second_pointer_mode++;
+        if(second_pointer_mode>2) {
+          second_pointer_mode = 0
+        }
+        hmFS.SysProSetInt('second_pointer_mode',second_pointer_mode);
+        setSecondVisibility(second_pointer_mode); 
+        if(second_pointer_mode==0) hmUI.showToast({text: gettext('smooth')});
+        if(second_pointer_mode==1) hmUI.showToast({text: gettext('normal')});
+        if(second_pointer_mode==2) hmUI.showToast({text: gettext('without')});
+      }
+    });
+
+    /* let second_click_img = hmUI.createWidget(hmUI.widget.IMG, {
       x: 203,  // x coordinate of the button
       y: 203,  // y coordinate of the button
       w: 50,  // button width
@@ -454,13 +489,8 @@ WatchFace({
     });
 
     second_click_img.addEventListener(hmUI.event.CLICK_UP, function (info) {
-      second_pointer_mode++;
-      if(second_pointer_mode>2) {
-        second_pointer_mode = 0
-      }
-      hmFS.SysProSetInt('second_pointer_mode',second_pointer_mode);
-      setSecondVisibility(second_pointer_mode); 
-    });
+      
+    }); */
 
     function startSecAnim(sec, animDuration) {
       const secAnim = {
