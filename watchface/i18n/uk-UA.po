@@ -1,2 +1,8 @@
 msgid "description"
 msgstr "Amazfit порт з Facer https://www.facer.io/watchface/HmFQUQFqHm?watchModel=galaxywatch4black"
+msgid "smooth"
+msgstr "Плавна сек. стрілка"
+msgid "normal"
+msgstr "Звичайна сек. стрілка"
+msgid "without"
+msgstr "Без сек. стрілки"

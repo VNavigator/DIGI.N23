@@ -23,6 +23,7 @@ let normal_timerUpdateSec = undefined;
 let normal_timerUpdateSecSmooth = undefined;
 let lastTime = 0;
 let timeSensor = ''
+let second_pointer_mode = 0;
 
 WatchFace({
   init_view() {
@@ -41,15 +42,15 @@ WatchFace({
     const big_point_array = ['0001.png','0001b.png','0001c.png','0001d.png']
     const small_point_array = ['0003.png','0003b.png','0003c.png','0003d.png']
 
-    var skin_number = 0;
-    var second_pointer_mode = 0; //0 - smooth, 1 - step, 2 - without
+    let skin_number = 0;
+     //0 - smooth, 1 - step, 2 - without
     skin_number = 0 + hmFS.SysProGetInt('skin_number');
-    second_pointer_mode = 0 + hmFS.SysProGetInt('second_pointer');
+    second_pointer_mode = 0 + hmFS.SysProGetInt('second_pointer_mode');
 
     if(skin_number<0 || skin_number>3) skin_number = 0;
     skin_number = 0;
 
-    var month_array = month_array_en;
+    let month_array = month_array_en;
     const language = hmSetting.getLanguage()
     switch(language){
       case uk_UA: {
@@ -389,45 +390,37 @@ WatchFace({
     });
 
 
-    function setSecondVisibility(mode){  
-      const smooth_array = [0,0,0,1,1,1]
-      const normal_array = [0,0,0,1,1,1]
-      const without_array = [0,0,0,1,1,0]
-      var mode_array = smooth_array;
-      switch(mode){
-        case SM_SMOOTH:{
-          normal_analog_clock_pro_hour_pointer_imgS.setProperty(hmUI.prop.VISIBLE,true);
-          normal_analog_clock_pro_minute_pointer_imgS.setProperty(hmUI.prop.VISIBLE,true);
-          normal_analog_clock_pro_second_pointer_imgS.setProperty(hmUI.prop.VISIBLE,true);
-          normal_analog_clock_hour_pointer_imgN.setProperty(hmUI.prop.VISIBLE,false);
-          normal_analog_clock_minute_pointer_imgN.setProperty(hmUI.prop.VISIBLE,false);
-          normal_analog_clock_second_pointer_imgN.setProperty(hmUI.prop.VISIBLE,false);
-          break;
-        }
-        case SM_NORMAL:{
-          mode_array = normal_array
-          break;
-        }
-        case SM_WITHOUT:{
-          mode_array = without_array
-          break;
-        }
-        default:{
-          mode_array = smooth_array
-        }
-      }
-      
+    function setSecondVisibility(mode){
+      if(mode==0) hmUI.showToast({text: gettext('smooth')});
+      if(mode==1) hmUI.showToast({text: gettext('normal')});
+      if(mode==2) hmUI.showToast({text: gettext('without')});
+      normal_analog_clock_pro_hour_pointer_imgS.setProperty(hmUI.prop.VISIBLE,mode==0);
+      normal_analog_clock_pro_minute_pointer_imgS.setProperty(hmUI.prop.VISIBLE,mode==0);
+      normal_analog_clock_pro_second_pointer_imgS.setProperty(hmUI.prop.VISIBLE,mode==0);
+      normal_analog_clock_hour_pointer_imgN.setProperty(hmUI.prop.VISIBLE,mode==1 || mode==2);
+      normal_analog_clock_minute_pointer_imgN.setProperty(hmUI.prop.VISIBLE,mode==1 || mode==2);
+      normal_analog_clock_second_pointer_imgN.setProperty(hmUI.prop.VISIBLE,mode==1);
     }
 
-    setSecondVisibility(second_pointer_mode)
+    setSecondVisibility(0)
 
-    normal_heart_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {
-      x: 82,
-      y: 180,
-      w: 96,
-      h: 96,
+    hmUI.createWidget(hmUI.widget.IMG_CLICK, {
+      x: 86,
+      y: 183,
+      w: 90,
+      h: 90,
       src: 'btn.png',
       type: hmUI.data_type.HEART,
+      show_level: hmUI.show_level.ONLY_NORMAL,
+    });
+
+    hmUI.createWidget(hmUI.widget.IMG_CLICK, {
+      x: 277,
+      y: 183,
+      w: 90,
+      h: 90,
+      src: 'btn.png',
+      type: hmUI.data_type.BATTERY,
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
@@ -451,23 +444,22 @@ WatchFace({
       }
     });
 
-    hmUI.createWidget(hmUI.widget.BUTTON, {
+    let second_click_img = hmUI.createWidget(hmUI.widget.IMG, {
       x: 203,  // x coordinate of the button
       y: 203,  // y coordinate of the button
-      text: '',
       w: 50,  // button width
       h: 50,  // button height
-      normal_src: 'btn.png',  // transparent image
-      press_src: 'btn.png',  // transparent image
+      src: 'btn.png',  // transparent image
       show_level: hmUI.show_level.ONLY_NORMAL,
-      click_func: () => {
-        second_pointer_mode++;
-        if(second_pointer_mode>2) {
-          second_pointer_mode = 0
-        }
-        hmFS.SysProSetInt('second_mode',second_pointer_mode);
-        setSecondVisibility(second_pointer_mode); 
+    });
+
+    second_click_img.addEventListener(hmUI.event.CLICK_UP, function (info) {
+      second_pointer_mode++;
+      if(second_pointer_mode>2) {
+        second_pointer_mode = 0
       }
+      hmFS.SysProSetInt('second_pointer_mode',second_pointer_mode);
+      setSecondVisibility(second_pointer_mode); 
     });
 
     function startSecAnim(sec, animDuration) {
@@ -507,9 +499,9 @@ WatchFace({
 
     const widgetDelegate = hmUI.createWidget(hmUI.widget.WIDGET_DELEGATE, {
       resume_call: (function () {
-        //if(second_pointer_mode==SM_SMOOTH){ 
+        //if(second_pointer_mode==0){ 
           time_update(true, true);
-          if (screenType == hmSetting.screen_type.WATCHFACE) {
+          if (screenType === hmSetting.screen_type.WATCHFACE) {
             if (!normal_timerUpdateSec) {
               let animDelay = timeSensor.utc % 1000;
               let animRepeat = 1000;
