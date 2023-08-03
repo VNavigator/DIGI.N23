@@ -19,12 +19,15 @@ let normal_analog_clock_second_pointer_imgN = ''
 let normal_analog_clock_pro_hour_pointer_imgS = ''
 let normal_analog_clock_pro_minute_pointer_imgS = ''
 let normal_analog_clock_pro_second_pointer_imgS = ''
+let back_cover_img = ''
 let normal_timerUpdateSec = undefined;
 let normal_timerUpdateSecSmooth = undefined;
 let lastTime = 0;
 let timeSensor = ''
 let second_pointer_mode = 0;
 let skin_number = 0;
+let back_number = 0;
+let vibrate = undefined
 
 WatchFace({
   init_view() {
@@ -36,13 +39,15 @@ WatchFace({
     const month_array_en = ["0034.png","0035.png","0036.png","0037.png","0038.png","0039.png","0040.png","0041.png","0042.png","0043.png","0044.png","0045.png"]
     const month_array_ua = ["0046.png","0047.png","0048.png","0049.png","0050.png","0051.png","0052.png","0053.png","0054.png","0055.png","0056.png","0057.png"]
     const bg_array = ['0008.png','0008b.png','0008c.png','0008d.png']
+    const back_cover_array = ['0010.png','0011.png','0012.png','0013.png']
     const big_point_array = ['0001.png','0001b.png','0001c.png','0001d.png']
     const small_point_array = ['0003.png','0003b.png','0003c.png','0003d.png']
 
     skin_number = 0 + hmFS.SysProGetInt('skin_number');
     second_pointer_mode = 0 + hmFS.SysProGetInt('second_pointer_mode');
+    back_number = 0 + hmFS.SysProGetInt('back_number');
 
-    if(skin_number<0 || skin_number>3) skin_number = 0;
+    vibrate = hmSensor.createSensor(hmSensor.id.VIBRATE)
 
     let month_array = month_array_en;
     const language = hmSetting.getLanguage()
@@ -55,12 +60,12 @@ WatchFace({
       default: month_array = month_array_en
     }
 
-    hmUI.createWidget(hmUI.widget.IMG, {
+    back_cover_img = hmUI.createWidget(hmUI.widget.IMG, {
       x: 0,
       y: 0,
       w: 454,
       h: 454,
-      src: '0010.png',
+      src: back_cover_array[back_number],
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
@@ -395,33 +400,86 @@ WatchFace({
 
     setSecondVisibility(second_pointer_mode)
 
-    hmUI.createWidget(hmUI.widget.IMG_CLICK, {
+    function short_vibro(){
+      vibrate.stop()
+      vibrate.scene = 24
+      vibrate.start()
+    }
+
+    hmUI.createWidget(hmUI.widget.BUTTON, {
       x: 86,
       y: 183,
       w: 90,
       h: 90,
-      src: 'btn.png',
-      type: hmUI.data_type.HEART,
+      text: '',
+      normal_src: 'btn.png',  // transparent image
+      press_src: 'btn.png',  // transparent image
       show_level: hmUI.show_level.ONLY_NORMAL,
+      click_func: () => {
+        short_vibro();
+        hmApp.startApp({url: "heart_app_Screen", native: true});
+      }
     });
 
-    function showDialog(){
-      const dialog = hmUI.createDialog({
-        title: 'bluetooth',
-        auto_hide: false,
-        click_listener: ({ type }) => {
-          if(type==0){//cancel button
-            hmFS.SysProSetInt(ALARM_SENT,0)
-          }
-          if(type==1){//confirm button
-            hmFS.SysProSetInt(ALARM_SENT,1)
-          }
-          dialog.show(false)
-        }
-      })
-    
-      dialog.show(true)
-    }
+    hmUI.createWidget(hmUI.widget.BUTTON, {
+      x: 52,
+      y: 49,
+      w: 80,
+      h: 80,
+      text: '',
+      normal_src: 'btn.png',  // transparent image
+      press_src: 'btn.png',  // transparent image
+      show_level: hmUI.show_level.ONLY_NORMAL,
+      click_func: () => {
+        short_vibro();
+        hmApp.startApp({url: "WeatherScreen", native: true});
+      }
+    });
+
+    hmUI.createWidget(hmUI.widget.BUTTON, {
+      x: 195,
+      y: 144,
+      w: 64,
+      h: 64,
+      text: '',
+      normal_src: 'btn.png',  // transparent image
+      press_src: 'btn.png',  // transparent image
+      show_level: hmUI.show_level.ONLY_NORMAL,
+      click_func: () => {
+        short_vibro();
+        hmApp.startApp({url: "ScheduleCalScreen", native: true});
+      }
+    });
+
+    hmUI.createWidget(hmUI.widget.BUTTON, {
+      x: 176,
+      y: 290,
+      w: 100,
+      h: 100,
+      text: '',
+      normal_src: 'btn.png',  // transparent image
+      press_src: 'btn.png',  // transparent image
+      show_level: hmUI.show_level.ONLY_NORMAL,
+      click_func: () => {
+        short_vibro();
+        hmApp.startApp({url: "activityAppScreen", native: true});
+      }
+    });
+
+    hmUI.createWidget(hmUI.widget.BUTTON, {
+      x: 49,
+      y: 326,
+      w: 80,
+      h: 80,
+      text: '',
+      normal_src: 'btn.png',  // transparent image
+      press_src: 'btn.png',  // transparent image
+      show_level: hmUI.show_level.ONLY_NORMAL,
+      click_func: () => {
+        short_vibro();
+        hmApp.startApp({url: "AlarmInfoScreen", native: true});
+      }
+    });
 
     hmUI.createWidget(hmUI.widget.BUTTON, {
       x: 277,
@@ -433,20 +491,37 @@ WatchFace({
       press_src: 'btn.png',  // transparent image
       show_level: hmUI.show_level.ONLY_NORMAL,
       click_func: () => {
-        showDialog()
+        short_vibro();
+        hmApp.startApp({url: "LowBatteryScreen", native: true});
       }
     });
 
     hmUI.createWidget(hmUI.widget.BUTTON, {
-      x: 326,  // x coordinate of the button
-      y: 59,  // y coordinate of the button
+      x: 329,
+      y: 326,
+      w: 80,
+      h: 80,
       text: '',
-      w: 66,  // button width
-      h: 66,  // button height
       normal_src: 'btn.png',  // transparent image
       press_src: 'btn.png',  // transparent image
       show_level: hmUI.show_level.ONLY_NORMAL,
       click_func: () => {
+        short_vibro();
+        hmApp.startApp({url: 'PhoneContactsScreen', native: true });
+      }
+    });
+
+    hmUI.createWidget(hmUI.widget.BUTTON, {
+      x: 326, 
+      y: 59,  
+      text: '',
+      w: 66, 
+      h: 66,  
+      normal_src: 'btn.png',  
+      press_src: 'btn.png',  
+      show_level: hmUI.show_level.ONLY_NORMAL,
+      click_func: () => {
+        short_vibro()
         skin_number++;
         if(skin_number>3) {
           skin_number = 0
@@ -458,15 +533,16 @@ WatchFace({
     });
 
     hmUI.createWidget(hmUI.widget.BUTTON, {
-      x: 203,  // x coordinate of the button
-      y: 203,  // y coordinate of the button
+      x: 203,  
+      y: 203,  
       text: '',
-      w: 50,  // button width
-      h: 50,  // button height
-      normal_src: 'btn.png',  // transparent image
-      press_src: 'btn.png',  // transparent image
+      w: 50,  
+      h: 50,  
+      normal_src: 'btn.png',  
+      press_src: 'btn.png',  
       show_level: hmUI.show_level.ONLY_NORMAL,
       click_func: () => {
+        short_vibro();
         second_pointer_mode++;
         if(second_pointer_mode>2) {
           second_pointer_mode = 0
@@ -479,18 +555,25 @@ WatchFace({
       }
     });
 
-    /* let second_click_img = hmUI.createWidget(hmUI.widget.IMG, {
-      x: 203,  // x coordinate of the button
-      y: 203,  // y coordinate of the button
-      w: 50,  // button width
-      h: 50,  // button height
-      src: 'btn.png',  // transparent image
+    hmUI.createWidget(hmUI.widget.BUTTON, {
+      x: 192,  
+      y: 52,  
+      text: '',
+      w: 70,  
+      h: 50,  
+      normal_src: 'btn.png',  
+      press_src: 'btn.png',  
       show_level: hmUI.show_level.ONLY_NORMAL,
+      click_func: () => {
+        short_vibro();
+        back_number++;
+        if(back_number>3) {
+          back_number = 0
+        }
+        hmFS.SysProSetInt('back_number',back_number);
+        back_cover_img.setProperty(hmUI.prop.SRC,back_cover_array[back_number]);
+      }
     });
-
-    second_click_img.addEventListener(hmUI.event.CLICK_UP, function (info) {
-      
-    }); */
 
     function startSecAnim(sec, animDuration) {
       const secAnim = {
@@ -583,6 +666,7 @@ WatchFace({
   },
 
   onDestroy() {
+    vibrate && vibrate.stop()
     console.log('index page.js on destroy invoke')
   },
 })

@@ -9,7 +9,7 @@
       "name": "1.0.1"
     },
     "icon": "Preview.png",
-    "vender": "zepp",
+    "vender": "VNavigator",
     "description": "Amazfit port from Facer https://www.facer.io/watchface/HmFQUQFqHm?watchModel=galaxywatch4black"
   },
   "permissions": ["gps","screen"],
