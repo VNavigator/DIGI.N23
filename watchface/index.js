@@ -72,7 +72,7 @@ WatchFace({
     hmUI.createWidget(hmUI.widget.IMG, {
       x: 0,
       y: 0,
-      src: '0009.png',
+      src: '0009n.png',
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
