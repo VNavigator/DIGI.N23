@@ -1,2 +1,2 @@
-# DIGI.N23
+# HIGH.N23
 Amazfit GTR3 port from Facer
