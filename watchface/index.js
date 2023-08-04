@@ -124,7 +124,7 @@ WatchFace({
           center_y: 341,
           x: 16,
           y: 71,
-          start_angle: -119,
+          start_angle: -120,
           end_angle: 120,
           type: hmUI.data_type.STEP,
           show_level: hmUI.show_level.ONLY_NORMAL,
@@ -137,8 +137,8 @@ WatchFace({
             center_y: 227,
             x: 15,
             y: 71,
-            start_angle: -31,
-            end_angle: 209,
+            start_angle: -30,
+            end_angle: 210,
             type: hmUI.data_type.HEART,
             show_level: hmUI.show_level.ONLY_NORMAL,
           })
@@ -151,7 +151,7 @@ WatchFace({
             center_y: 228,
             x: 15,
             y: 71,
-            start_angle: -212,
+            start_angle: -210,
             end_angle: 30,
             type: hmUI.data_type.BATTERY,
             show_level: hmUI.show_level.ONLY_NORMAL,
@@ -159,169 +159,13 @@ WatchFace({
         );
     }
 
-    /* normal_step_pointer_progress_img_pointerA = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
-      src: big_point_array[0],
-      center_x: 226,
-      center_y: 341,
-      x: 16,
-      y: 71,
-      start_angle: -119,
-      end_angle: 120,
-      type: hmUI.data_type.STEP,
-      show_level: hmUI.show_level.ONLY_NORMAL,
-    });
-
-    normal_step_pointer_progress_img_pointerB = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
-      src: big_point_array[1],
-      center_x: 226,
-      center_y: 341,
-      x: 16,
-      y: 71,
-      start_angle: -119,
-      end_angle: 120,
-      type: hmUI.data_type.STEP,
-      show_level: hmUI.show_level.ONLY_NORMAL,
-    });
-
-    normal_step_pointer_progress_img_pointerC = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
-      src: big_point_array[2],
-      center_x: 226,
-      center_y: 341,
-      x: 16,
-      y: 71,
-      start_angle: -119,
-      end_angle: 120,
-      type: hmUI.data_type.STEP,
-      show_level: hmUI.show_level.ONLY_NORMAL,
-    });
-
-    normal_step_pointer_progress_img_pointerD = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
-      src: big_point_array[3],
-      center_x: 226,
-      center_y: 341,
-      x: 16,
-      y: 71,
-      start_angle: -119,
-      end_angle: 120,
-      type: hmUI.data_type.STEP,
-      show_level: hmUI.show_level.ONLY_NORMAL,
-    }); */
-
-    /* normal_heart_rate_pointer_progress_img_pointerA = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
-      src: small_point_array[0],
-      center_x: 130,
-      center_y: 227,
-      x: 15,
-      y: 71,
-      start_angle: -31,
-      end_angle: 209,
-      type: hmUI.data_type.HEART,
-      show_level: hmUI.show_level.ONLY_NORMAL,
-    });
-
-    normal_heart_rate_pointer_progress_img_pointerB = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
-      src: small_point_array[1],
-      center_x: 130,
-      center_y: 227,
-      x: 15,
-      y: 71,
-      start_angle: -31,
-      end_angle: 209,
-      type: hmUI.data_type.HEART,
-      show_level: hmUI.show_level.ONLY_NORMAL,
-    });
-
-    normal_heart_rate_pointer_progress_img_pointerC = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
-      src: small_point_array[2],
-      center_x: 130,
-      center_y: 227,
-      x: 15,
-      y: 71,
-      start_angle: -31,
-      end_angle: 209,
-      type: hmUI.data_type.HEART,
-      show_level: hmUI.show_level.ONLY_NORMAL,
-    });
-
-    normal_heart_rate_pointer_progress_img_pointerD = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
-      src: small_point_array[3],
-      center_x: 130,
-      center_y: 227,
-      x: 15,
-      y: 71,
-      start_angle: -31,
-      end_angle: 209,
-      type: hmUI.data_type.HEART,
-      show_level: hmUI.show_level.ONLY_NORMAL,
-    }); */
-
-    /* normal_battery_pointer_progress_img_pointerA = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
-      src: small_point_array[0],
-      center_x: 322,
-      center_y: 228,
-      x: 15,
-      y: 71,
-      start_angle: -212,
-      end_angle: 30,
-      type: hmUI.data_type.BATTERY,
-      show_level: hmUI.show_level.ONLY_NORMAL,
-    });
-
-    normal_battery_pointer_progress_img_pointerB = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
-      src: small_point_array[1],
-      center_x: 322,
-      center_y: 228,
-      x: 15,
-      y: 71,
-      start_angle: -212,
-      end_angle: 30,
-      type: hmUI.data_type.BATTERY,
-      show_level: hmUI.show_level.ONLY_NORMAL,
-    });
-
-    normal_battery_pointer_progress_img_pointerC = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
-      src: small_point_array[2],
-      center_x: 322,
-      center_y: 228,
-      x: 15,
-      y: 71,
-      start_angle: -212,
-      end_angle: 30,
-      type: hmUI.data_type.BATTERY,
-      show_level: hmUI.show_level.ONLY_NORMAL,
-    });
-
-
-    normal_battery_pointer_progress_img_pointerD = hmUI.createWidget(hmUI.widget.IMG_POINTER, {
-      src: small_point_array[3],
-      center_x: 322,
-      center_y: 228,
-      x: 15,
-      y: 71,
-      start_angle: -212,
-      end_angle: 30,
-      type: hmUI.data_type.BATTERY,
-      show_level: hmUI.show_level.ONLY_NORMAL,
-    }); */
-
+    
     function setVisibility(number){
       for(let i = 0;i < 4; i++){
         step_pointer_widget_array[i].setProperty(hmUI.prop.VISIBLE,number==i)
         heart_rate_pointer_widget_array[i].setProperty(hmUI.prop.VISIBLE,number==i)
         battery_pointer_widget_array[i].setProperty(hmUI.prop.VISIBLE,number==i)  
       }
-      /* normal_step_pointer_progress_img_pointerA.setProperty(hmUI.prop.VISIBLE,number==0);
-      normal_step_pointer_progress_img_pointerB.setProperty(hmUI.prop.VISIBLE,number==1);
-      normal_step_pointer_progress_img_pointerC.setProperty(hmUI.prop.VISIBLE,number==2);
-      normal_step_pointer_progress_img_pointerD.setProperty(hmUI.prop.VISIBLE,number==3);
-      normal_heart_rate_pointer_progress_img_pointerA.setProperty(hmUI.prop.VISIBLE,number==0);
-      normal_heart_rate_pointer_progress_img_pointerB.setProperty(hmUI.prop.VISIBLE,number==1);
-      normal_heart_rate_pointer_progress_img_pointerC.setProperty(hmUI.prop.VISIBLE,number==2);
-      normal_heart_rate_pointer_progress_img_pointerD.setProperty(hmUI.prop.VISIBLE,number==3);
-      normal_battery_pointer_progress_img_pointerA.setProperty(hmUI.prop.VISIBLE,number==0);
-      normal_battery_pointer_progress_img_pointerB.setProperty(hmUI.prop.VISIBLE,number==1);
-      normal_battery_pointer_progress_img_pointerC.setProperty(hmUI.prop.VISIBLE,number==2);
-      normal_battery_pointer_progress_img_pointerD.setProperty(hmUI.prop.VISIBLE,number==3);  */
     }
 
     setVisibility(skin_number);
