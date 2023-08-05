@@ -4,9 +4,11 @@ let normal_image_img = ''
 let normal_analog_clock_normal_hour_p_img = ''
 let normal_analog_clock_normal_minute_p_img = ''
 let normal_analog_clock_normal_second_p_img = ''
+let normal_analog_clock_normal_second_p_sw_img = ''
 let normal_analog_clock_smooth_hour_p_img = ''
 let normal_analog_clock_smooth_minute_p_img = ''
 let normal_analog_clock_smooth_second_p_img = ''
+let normal_analog_clock_smooth_second_p_sw_img = ''
 let back_cover_img = ''
 let normal_timerUpdateSec = undefined;
 let normal_timerUpdateSecSmooth = undefined;
@@ -61,6 +63,15 @@ WatchFace({
       //case language_COUNTRY ......
       default: month_array = month_array_en
     }
+
+    hmUI.createWidget(hmUI.widget.FILL_RECT, {
+      x: 0,
+      y: 0,
+      w: 454,
+      h: 454,
+      color: '0xFF000000',
+      show_level: hmUI.show_level.ONLY_AOD,
+    });
 
     back_cover_img = hmUI.createWidget(hmUI.widget.IMG, {
       x: 0,
@@ -200,6 +211,15 @@ WatchFace({
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
+    hmUI.createWidget(hmUI.widget.TIME_POINTER, {
+      hour_path: '0006aod.png',
+      hour_centerX: 227,
+      hour_centerY: 227,
+      hour_posX: 22,
+      hour_posY: 227,
+      show_level: hmUI.show_level.ONLY_AOD,
+    });
+
     normal_analog_clock_normal_minute_p_img = hmUI.createWidget(hmUI.widget.TIME_POINTER, {
       minute_path: '0005.png',
       minute_centerX: 227,
@@ -209,12 +229,30 @@ WatchFace({
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
+    hmUI.createWidget(hmUI.widget.TIME_POINTER, {
+      minute_path: '0005aod.png',
+      minute_centerX: 227,
+      minute_centerY: 227,
+      minute_posX: 22,
+      minute_posY: 227,
+      show_level: hmUI.show_level.ONLY_AOD,
+    });
+
+    normal_analog_clock_normal_second_p_sw_img = hmUI.createWidget(hmUI.widget.TIME_POINTER, {
+      second_path: '0004sw.png',
+      second_centerX: 233,
+      second_centerY: 235,
+      second_posX: 20,
+      second_posY: 205,
+      show_level: hmUI.show_level.ONLY_NORMAL,
+    });
+
     normal_analog_clock_normal_second_p_img = hmUI.createWidget(hmUI.widget.TIME_POINTER, {
-      second_path: '0004w.png',
+      second_path: '0004w1.png',
       second_centerX: 227,
       second_centerY: 227,
-      second_posX: 22,
-      second_posY: 226,
+      second_posX: 12,
+      second_posY: 199,
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
@@ -248,20 +286,34 @@ WatchFace({
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
+    normal_analog_clock_smooth_second_p_sw_img = hmUI.createWidget(hmUI.widget.IMG, {
+      x: 0,
+      y: 0,
+      w: deviceInfo.width,
+      h: deviceInfo.height,
+      pos_x: 233 - 20,
+      pos_y: 235 - 205,
+      center_x: 233,
+      center_y: 235,
+      src: '0004sw.png',
+      angle: 0,
+      show_level: hmUI.show_level.ONLY_NORMAL,
+    });
+   
     normal_analog_clock_smooth_second_p_img = hmUI.createWidget(hmUI.widget.IMG, {
       x: 0,
       y: 0,
       w: deviceInfo.width,
       h: deviceInfo.height,
-      pos_x: 227 - 22,
-      pos_y: 227 - 226,
+      pos_x: 227 - 12,
+      pos_y: 227 - 199,
       center_x: 227,
       center_y: 227,
-      src: '0004w.png',
+      src: '0004w1.png',
       angle: 0,
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
-   
+
     function setVisibility(number){
       for(let i = 0;i < 4; i++){
         step_pointer_widget_array[i].setProperty(hmUI.prop.VISIBLE,number==i)
@@ -430,6 +482,7 @@ WatchFace({
         anim_status: 1,
       }
       normal_analog_clock_smooth_second_p_img.setProperty(hmUI.prop.ANIM, secAnim);
+      normal_analog_clock_smooth_second_p_sw_img.setProperty(hmUI.prop.ANIM, secAnim);
     }
 
     function time_update(updateHour = false, updateMinute = false) {
@@ -473,6 +526,7 @@ WatchFace({
 
       let secAngle = 0 + (360*6)*(timeSensor.second + ((timeSensor.utc % 1000) / 1000))/360;
       normal_analog_clock_smooth_second_p_img.setProperty(hmUI.prop.ANGLE, secAngle);
+      normal_analog_clock_smooth_second_p_sw_img.setProperty(hmUI.prop.ANGLE, secAngle);
       if (screenType == hmSetting.screen_type.WATCHFACE) {
         if (!normal_timerUpdateSecSmooth) {
           let duration = 0;
@@ -523,9 +577,11 @@ WatchFace({
       normal_analog_clock_smooth_hour_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_SMOOTH);
       normal_analog_clock_smooth_minute_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_SMOOTH);
       normal_analog_clock_smooth_second_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_SMOOTH);
+      normal_analog_clock_smooth_second_p_sw_img.setProperty(hmUI.prop.VISIBLE,mode==SM_SMOOTH);
       normal_analog_clock_normal_hour_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_STEP || mode==SM_WITHOUT);
       normal_analog_clock_normal_minute_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_STEP || mode==SM_WITHOUT);
       normal_analog_clock_normal_second_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_STEP);
+      normal_analog_clock_normal_second_p_sw_img.setProperty(hmUI.prop.VISIBLE,mode==SM_STEP);
       delegate();
     }
  
