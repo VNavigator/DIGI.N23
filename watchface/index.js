@@ -98,7 +98,7 @@ WatchFace({
       day_sc_array: month_digits_array,
       day_tc_array: month_digits_array,
       day_en_array: month_digits_array,
-      day_zero: 0,
+      day_zero: 1,
       day_space: 0,
       day_align: hmUI.align.CENTER_H,
       day_is_character: false,
