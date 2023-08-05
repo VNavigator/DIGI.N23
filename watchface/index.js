@@ -24,16 +24,19 @@ let widgetDelegate = undefined
 WatchFace({
   init_view() {
     
-    const uk_UA = 18
+    const uk_UA = 18;
+    const SM_SMOOTH = 0;
+    const SM_STEP = 1;
+    const SM_WITHOUT = 2;
 
-    const small_digits_array = ["0014.png","0015.png","0016.png","0017.png","0018.png","0019.png","0020.png","0021.png","0022.png","0023.png"]
-    const month_digits_array = ["0024.png","0025.png","0026.png","0027.png","0028.png","0029.png","0030.png","0031.png","0032.png","0033.png"]
-    const month_array_en = ["0034.png","0035.png","0036.png","0037.png","0038.png","0039.png","0040.png","0041.png","0042.png","0043.png","0044.png","0045.png"]
-    const month_array_ua = ["0046.png","0047.png","0048.png","0049.png","0050.png","0051.png","0052.png","0053.png","0054.png","0055.png","0056.png","0057.png"]
-    const bg_array = ['0008.png','0008b.png','0008c.png','0008d.png']
-    const back_cover_array = ['0010.png','0011.png','0012.png','0013.png']
-    const big_point_array = ['0001.png','0001b.png','0001c.png','0001d.png']
-    const small_point_array = ['0003.png','0003b.png','0003c.png','0003d.png']
+    const small_digits_array = ["0014.png","0015.png","0016.png","0017.png","0018.png","0019.png","0020.png","0021.png","0022.png","0023.png"];
+    const month_digits_array = ["0024.png","0025.png","0026.png","0027.png","0028.png","0029.png","0030.png","0031.png","0032.png","0033.png"];
+    const month_array_en = ["0034.png","0035.png","0036.png","0037.png","0038.png","0039.png","0040.png","0041.png","0042.png","0043.png","0044.png","0045.png"];
+    const month_array_ua = ["0046.png","0047.png","0048.png","0049.png","0050.png","0051.png","0052.png","0053.png","0054.png","0055.png","0056.png","0057.png"];
+    const bg_array = ['0008.png','0008b.png','0008c.png','0008d.png'];
+    const back_cover_array = ['0010.png','0011.png','0012.png','0013.png'];
+    const big_point_array = ['0001.png','0001b.png','0001c.png','0001d.png'];
+    const small_point_array = ['0003.png','0003b.png','0003c.png','0003d.png'];
     const language = hmSetting.getLanguage()
     let month_array = month_array_en;
     
@@ -498,7 +501,7 @@ WatchFace({
     }
 
     function delegate(){
-      if(second_pointer_mode==0){
+      if(second_pointer_mode==SM_SMOOTH){
         widgetDelegate = hmUI.createWidget(hmUI.widget.WIDGET_DELEGATE, {
           resume_call: ()=>{
             resumeCall();
@@ -517,12 +520,12 @@ WatchFace({
     }
 
     function setSecondVisibility(mode){
-      normal_analog_clock_smooth_hour_p_img.setProperty(hmUI.prop.VISIBLE,mode==0);
-      normal_analog_clock_smooth_minute_p_img.setProperty(hmUI.prop.VISIBLE,mode==0);
-      normal_analog_clock_smooth_second_p_img.setProperty(hmUI.prop.VISIBLE,mode==0);
-      normal_analog_clock_normal_hour_p_img.setProperty(hmUI.prop.VISIBLE,mode==1 || mode==2);
-      normal_analog_clock_normal_minute_p_img.setProperty(hmUI.prop.VISIBLE,mode==1 || mode==2);
-      normal_analog_clock_normal_second_p_img.setProperty(hmUI.prop.VISIBLE,mode==1);
+      normal_analog_clock_smooth_hour_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_SMOOTH);
+      normal_analog_clock_smooth_minute_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_SMOOTH);
+      normal_analog_clock_smooth_second_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_SMOOTH);
+      normal_analog_clock_normal_hour_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_STEP || mode==SM_WITHOUT);
+      normal_analog_clock_normal_minute_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_STEP || mode==SM_WITHOUT);
+      normal_analog_clock_normal_second_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_STEP);
       delegate();
     }
  
@@ -545,9 +548,9 @@ WatchFace({
         }
         hmFS.SysProSetInt('second_pointer_mode',second_pointer_mode);
         setSecondVisibility(second_pointer_mode); 
-        /* if(second_pointer_mode==0) hmUI.showToast({text: gettext('smooth')});
-        if(second_pointer_mode==1) hmUI.showToast({text: gettext('normal')});
-        if(second_pointer_mode==2) hmUI.showToast({text: gettext('without')}); */
+        /*if(second_pointer_mode==SM_SMOOTH) hmUI.showToast({text: gettext('smooth')});
+        if(second_pointer_mode==SM_STEP) hmUI.showToast({text: gettext('normal')});
+        if(second_pointer_mode==SM_WITHOUT) hmUI.showToast({text: gettext('without')}); */
       }
     });
   },
