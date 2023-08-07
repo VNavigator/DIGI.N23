@@ -35,8 +35,8 @@ WatchFace({
     const month_digits_array = ["0024.png","0025.png","0026.png","0027.png","0028.png","0029.png","0030.png","0031.png","0032.png","0033.png"];
     const month_array_en = ["0034.png","0035.png","0036.png","0037.png","0038.png","0039.png","0040.png","0041.png","0042.png","0043.png","0044.png","0045.png"];
     const month_array_ua = ["0046.png","0047.png","0048.png","0049.png","0050.png","0051.png","0052.png","0053.png","0054.png","0055.png","0056.png","0057.png"];
-    const bg_array = ['0008.png','0008b.png','0008c.png','0008d.png'];
-    const back_cover_array = ['0010.png','0011.png','0012.png','0013.png'];
+    const color_array = ['0008.png','0008b.png','0008c.png','0008d.png'];
+    const back_cover_array = ['0010.png','0011.png','0012.png','0013.png','0013b.png'];
     const big_point_array = ['0001.png','0001b.png','0001c.png','0001d.png'];
     const small_point_array = ['0003.png','0003b.png','0003c.png','0003d.png'];
     const language = hmSetting.getLanguage()
@@ -92,7 +92,7 @@ WatchFace({
     normal_image_img = hmUI.createWidget(hmUI.widget.IMG, {
       x: 0,
       y: 0,
-      src: bg_array[skin_number],
+      src: color_array[skin_number],
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
@@ -126,7 +126,7 @@ WatchFace({
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
-    for(let i = 0; i < 4; i++){
+    for(let i = 0; i < color_array.length; i++){
       step_pointer_widget_array.push(
         hmUI.createWidget(hmUI.widget.IMG_POINTER, {
           src: big_point_array[i],
@@ -441,11 +441,11 @@ WatchFace({
       click_func: () => {
         short_vibro()
         skin_number++;
-        if(skin_number>3) {
+        if(skin_number>(color_array.length-1)) {
           skin_number = 0
         }
         hmFS.SysProSetInt('skin_number',skin_number);
-        normal_image_img.setProperty(hmUI.prop.SRC,bg_array[skin_number]);
+        normal_image_img.setProperty(hmUI.prop.SRC,color_array[skin_number]);
         setVisibility(skin_number); 
       }
     });
@@ -462,7 +462,7 @@ WatchFace({
       click_func: () => {
         short_vibro();
         back_number++;
-        if(back_number>3) {
+        if(back_number>back_cover_array.length-1) {
           back_number = 0
         }
         hmFS.SysProSetInt('back_number',back_number);
