@@ -330,8 +330,8 @@ WatchFace({
       w: 90,
       h: 90,
       text: '',
-      normal_src: 'btn.png',  // transparent image
-      press_src: 'btn.png',  // transparent image
+      normal_src: 'btn.png',  
+      press_src: 'btn.png',  
       show_level: hmUI.show_level.ONLY_NORMAL,
       click_func: () => {
         short_vibro();
@@ -345,8 +345,8 @@ WatchFace({
       w: 80,
       h: 80,
       text: '',
-      normal_src: 'btn.png',  // transparent image
-      press_src: 'btn.png',  // transparent image
+      normal_src: 'btn.png',  
+      press_src: 'btn.png',  
       show_level: hmUI.show_level.ONLY_NORMAL,
       click_func: () => {
         short_vibro();
@@ -360,8 +360,8 @@ WatchFace({
       w: 64,
       h: 64,
       text: '',
-      normal_src: 'btn.png',  // transparent image
-      press_src: 'btn.png',  // transparent image
+      normal_src: 'btn.png',  
+      press_src: 'btn.png',  
       show_level: hmUI.show_level.ONLY_NORMAL,
       click_func: () => {
         short_vibro();
@@ -375,8 +375,8 @@ WatchFace({
       w: 100,
       h: 100,
       text: '',
-      normal_src: 'btn.png',  // transparent image
-      press_src: 'btn.png',  // transparent image
+      normal_src: 'btn.png',  
+      press_src: 'btn.png',  
       show_level: hmUI.show_level.ONLY_NORMAL,
       click_func: () => {
         short_vibro();
@@ -390,8 +390,8 @@ WatchFace({
       w: 80,
       h: 80,
       text: '',
-      normal_src: 'btn.png',  // transparent image
-      press_src: 'btn.png',  // transparent image
+      normal_src: 'btn.png',  
+      press_src: 'btn.png',  
       show_level: hmUI.show_level.ONLY_NORMAL,
       click_func: () => {
         short_vibro();
@@ -405,8 +405,8 @@ WatchFace({
       w: 90,
       h: 90,
       text: '',
-      normal_src: 'btn.png',  // transparent image
-      press_src: 'btn.png',  // transparent image
+      normal_src: 'btn.png',  
+      press_src: 'btn.png',  
       show_level: hmUI.show_level.ONLY_NORMAL,
       click_func: () => {
         short_vibro();
@@ -420,8 +420,8 @@ WatchFace({
       w: 80,
       h: 80,
       text: '',
-      normal_src: 'btn.png',  // transparent image
-      press_src: 'btn.png',  // transparent image
+      normal_src: 'btn.png',  
+      press_src: 'btn.png',  
       show_level: hmUI.show_level.ONLY_NORMAL,
       click_func: () => {
         short_vibro();
