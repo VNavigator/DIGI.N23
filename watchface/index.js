@@ -31,14 +31,14 @@ WatchFace({
     const SM_STEP = 1;
     const SM_WITHOUT = 2;
 
-    const small_digits_array = ["0014.png","0015.png","0016.png","0017.png","0018.png","0019.png","0020.png","0021.png","0022.png","0023.png"];
-    const month_digits_array = ["0024.png","0025.png","0026.png","0027.png","0028.png","0029.png","0030.png","0031.png","0032.png","0033.png"];
-    const month_array_en = ["0034.png","0035.png","0036.png","0037.png","0038.png","0039.png","0040.png","0041.png","0042.png","0043.png","0044.png","0045.png"];
-    const month_array_ua = ["0046.png","0047.png","0048.png","0049.png","0050.png","0051.png","0052.png","0053.png","0054.png","0055.png","0056.png","0057.png"];
-    const color_array = ['0008.png','0008b.png','0008c.png','0008d.png'];
-    const back_cover_array = ['0010.png','0011.png','0012.png','0013.png','0013b.png'];
-    const big_point_array = ['0001.png','0001b.png','0001c.png','0001d.png'];
-    const small_point_array = ['0003.png','0003b.png','0003c.png','0003d.png'];
+    const small_digits_array = ["sd0.png","sd1.png","sd2.png","sd3.png","sd4.png","sd5.png","sd6.png","sd7.png","sd8.png","sd9.png"];
+    const big_digits_array = ["bd0.png","bd1.png","bd2.png","bd3.png","bd4.png","bd5.png","bd6.png","bd7.png","bd8.png","bd9.png"];
+    const month_array_en = ["m_en1.png","m_en2.png","m_en3.png","m_en4.png","m_en5.png","m_en6.png","m_en7.png","m_en8.png","m_en9.png","m_en10.png","m_en11.png","m_en12.png"];
+    const month_array_ua = ["m_ua1.png","m_ua2.png","m_ua3.png","m_ua4.png","m_ua5.png","m_ua6.png","m_ua7.png","m_ua8.png","m_ua9.png","m_ua10.png","m_ua11.png","m_ua12.png"];;
+    const color_array = ["color1.png","color2.png","color3.png","color4.png","color5.png","color6.png","color7.png","color8.png","color9.png","color10.png","color11.png","color12.png","color13.png"];
+    const back_cover_array = ["bg_0.png","bg_1.png","bg_2.png","bg_3.png","bg_4.png"];
+    const big_point_array = ["ab1.png","ab2.png","ab3.png","ab4.png","ab5.png","ab6.png","ab7.png","ab8.png","ab9.png","ab10.png","ab11.png","ab12.png","ab13.png"];
+    const small_point_array = ["as1.png","as2.png","as3.png","as4.png","as5.png","as6.png","as7.png","as8.png","as9.png","as10.png","as11.png","as12.png","as13.png"];
     const language = hmSetting.getLanguage()
     let month_array = month_array_en;
     
@@ -85,7 +85,7 @@ WatchFace({
     hmUI.createWidget(hmUI.widget.IMG, {
       x: 0,
       y: 0,
-      src: '0009n.png',
+      src: 'base.png',
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
@@ -99,16 +99,16 @@ WatchFace({
     hmUI.createWidget(hmUI.widget.IMG, {
       x: 0,
       y: 0,
-      src: '0007.png',
+      src: 'edge.png',
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
     hmUI.createWidget(hmUI.widget.IMG_DATE, {
       day_startX: 207,
       day_startY: 152,
-      day_sc_array: month_digits_array,
-      day_tc_array: month_digits_array,
-      day_en_array: month_digits_array,
+      day_sc_array: big_digits_array,
+      day_tc_array: big_digits_array,
+      day_en_array: big_digits_array,
       day_zero: 1,
       day_space: 0,
       day_align: hmUI.align.CENTER_H,
@@ -203,7 +203,7 @@ WatchFace({
     });
 
     normal_analog_clock_normal_hour_p_img = hmUI.createWidget(hmUI.widget.TIME_POINTER, {
-      hour_path: '0006.png',
+      hour_path: 'ah.png',
       hour_centerX: 227,
       hour_centerY: 227,
       hour_posX: 22,
@@ -212,7 +212,7 @@ WatchFace({
     });
 
     hmUI.createWidget(hmUI.widget.TIME_POINTER, {
-      hour_path: '0006aod.png',
+      hour_path: 'ahi.png',
       hour_centerX: 227,
       hour_centerY: 227,
       hour_posX: 22,
@@ -221,7 +221,7 @@ WatchFace({
     });
 
     normal_analog_clock_normal_minute_p_img = hmUI.createWidget(hmUI.widget.TIME_POINTER, {
-      minute_path: '0005.png',
+      minute_path: 'am.png',
       minute_centerX: 227,
       minute_centerY: 227,
       minute_posX: 22,
@@ -230,7 +230,7 @@ WatchFace({
     });
 
     hmUI.createWidget(hmUI.widget.TIME_POINTER, {
-      minute_path: '0005aod.png',
+      minute_path: 'ami.png',
       minute_centerX: 227,
       minute_centerY: 227,
       minute_posX: 22,
@@ -239,7 +239,7 @@ WatchFace({
     });
 
     normal_analog_clock_normal_second_p_sw_img = hmUI.createWidget(hmUI.widget.TIME_POINTER, {
-      second_path: '0004sw.png',
+      second_path: 'assh.png',
       second_centerX: 233,
       second_centerY: 235,
       second_posX: 20,
@@ -248,7 +248,7 @@ WatchFace({
     });
 
     normal_analog_clock_normal_second_p_img = hmUI.createWidget(hmUI.widget.TIME_POINTER, {
-      second_path: '0004w1.png',
+      second_path: 'as.png',
       second_centerX: 227,
       second_centerY: 227,
       second_posX: 12,
@@ -265,7 +265,7 @@ WatchFace({
       pos_y: 227 - 227,
       center_x: 227,
       center_y: 227,
-      src: '0006.png',
+      src: 'ah.png',
       angle: 0,
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
@@ -281,7 +281,7 @@ WatchFace({
       pos_y: 227 - 227,
       center_x: 227,
       center_y: 227,
-      src: '0005.png',
+      src: 'am.png',
       angle: 0,
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
@@ -295,7 +295,7 @@ WatchFace({
       pos_y: 235 - 205,
       center_x: 233,
       center_y: 235,
-      src: '0004sw.png',
+      src: 'assh.png',
       angle: 0,
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
@@ -309,13 +309,13 @@ WatchFace({
       pos_y: 227 - 199,
       center_x: 227,
       center_y: 227,
-      src: '0004w1.png',
+      src: 'as.png',
       angle: 0,
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
     function setVisibility(number){
-      for(let i = 0;i < 4; i++){
+      for(let i = 0;i < color_array.length; i++){
         step_pointer_widget_array[i].setProperty(hmUI.prop.VISIBLE,number==i)
         heart_rate_pointer_widget_array[i].setProperty(hmUI.prop.VISIBLE,number==i)
         battery_pointer_widget_array[i].setProperty(hmUI.prop.VISIBLE,number==i)  
@@ -604,12 +604,10 @@ WatchFace({
         }
         hmFS.SysProSetInt('second_pointer_mode',second_pointer_mode);
         setSecondVisibility(second_pointer_mode); 
-        /*if(second_pointer_mode==SM_SMOOTH) hmUI.showToast({text: gettext('smooth')});
-        if(second_pointer_mode==SM_STEP) hmUI.showToast({text: gettext('normal')});
-        if(second_pointer_mode==SM_WITHOUT) hmUI.showToast({text: gettext('without')}); */
       }
     });
   },
+
   onInit() {
     console.log('index page.js on init invoke')
   },
