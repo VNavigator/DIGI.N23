@@ -426,7 +426,7 @@ WatchFace({
       show_level: hmUI.show_level.ONLY_NORMAL,
       click_func: () => {
         short_vibro();
-        hmApp.startApp({url: 'PhoneContactsScreen', native: true });
+        hmApp.startApp({url: "FindPhoneScreen", native: true});
       }
     });
 
