@@ -1,21 +1,21 @@
 import { gettext } from 'i18n'
 
-let normal_image_img = ''
-let normal_analog_clock_normal_hour_p_img = ''
-let normal_analog_clock_normal_minute_p_img = ''
-let normal_analog_clock_normal_second_p_img = ''
-let normal_analog_clock_normal_second_p_sw_img = ''
-let normal_analog_clock_smooth_hour_p_img = ''
-let normal_analog_clock_smooth_minute_p_img = ''
-let normal_analog_clock_smooth_second_p_img = ''
-let normal_analog_clock_smooth_second_p_sw_img = ''
-let back_cover_img = ''
+let color_img = ''
+let hour_p_img = ''
+let minute_p_img = ''
+let second_p_img = ''
+let second_p_shadow_img = ''
+let smooth_hour_p_img = ''
+let smooth_minute_p_img = ''
+let smooth_second_p_img = ''
+let smooth_second_p_shadow_img = ''
+let background_img = ''
 let normal_timerUpdateSec = undefined;
 let normal_timerUpdateSecSmooth = undefined;
 let lastTime = 0;
 let timeSensor = ''
 let second_pointer_mode = 0;
-let skin_number = 0;
+let color_number = 0;
 let back_number = 0;
 let vibrate = undefined
 let step_pointer_widget_array = new Array();
@@ -36,13 +36,14 @@ WatchFace({
     const month_array_en = ["m_en1.png","m_en2.png","m_en3.png","m_en4.png","m_en5.png","m_en6.png","m_en7.png","m_en8.png","m_en9.png","m_en10.png","m_en11.png","m_en12.png"];
     const month_array_ua = ["m_ua1.png","m_ua2.png","m_ua3.png","m_ua4.png","m_ua5.png","m_ua6.png","m_ua7.png","m_ua8.png","m_ua9.png","m_ua10.png","m_ua11.png","m_ua12.png"];;
     const color_array = ["color1.png","color2.png","color3.png","color4.png","color5.png","color6.png","color7.png","color8.png","color9.png","color10.png","color11.png","color12.png","color13.png"];
-    const back_cover_array = ["bg_0.png","bg_1.png","bg_2.png","bg_3.png","bg_4.png"];
-    const big_point_array = ["ab1.png","ab2.png","ab3.png","ab4.png","ab5.png","ab6.png","ab7.png","ab8.png","ab9.png","ab10.png","ab11.png","ab12.png","ab13.png"];
-    const small_point_array = ["as1.png","as2.png","as3.png","as4.png","as5.png","as6.png","as7.png","as8.png","as9.png","as10.png","as11.png","as12.png","as13.png"];
+    const background_array = ["bg_0.png","bg_1.png","bg_2.png","bg_3.png","bg_4.png"];
+    const arrow_big_array = ["ab1.png","ab2.png","ab3.png","ab4.png","ab5.png","ab6.png","ab7.png","ab8.png","ab9.png","ab10.png","ab11.png","ab12.png","ab13.png"];
+    const arrow_small_array = ["as1.png","as2.png","as3.png","as4.png","as5.png","as6.png","as7.png","as8.png","as9.png","as10.png","as11.png","as12.png","as13.png"];
+
     const language = hmSetting.getLanguage()
     let month_array = month_array_en;
     
-    skin_number = 0 + hmFS.SysProGetInt('skin_number');
+    color_number = 0 + hmFS.SysProGetInt('color_number');
     second_pointer_mode = 0 + hmFS.SysProGetInt('second_pointer_mode');
     back_number = 0 + hmFS.SysProGetInt('back_number');
 
@@ -73,12 +74,12 @@ WatchFace({
       show_level: hmUI.show_level.ONLY_AOD,
     });
 
-    back_cover_img = hmUI.createWidget(hmUI.widget.IMG, {
+    background_img = hmUI.createWidget(hmUI.widget.IMG, {
       x: 0,
       y: 0,
       w: 454,
       h: 454,
-      src: back_cover_array[back_number],
+      src: background_array[back_number],
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
@@ -89,10 +90,10 @@ WatchFace({
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
-    normal_image_img = hmUI.createWidget(hmUI.widget.IMG, {
+    color_img = hmUI.createWidget(hmUI.widget.IMG, {
       x: 0,
       y: 0,
-      src: color_array[skin_number],
+      src: color_array[color_number],
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
@@ -129,7 +130,7 @@ WatchFace({
     for(let i = 0; i < color_array.length; i++){
       step_pointer_widget_array.push(
         hmUI.createWidget(hmUI.widget.IMG_POINTER, {
-          src: big_point_array[i],
+          src: arrow_big_array[i],
           center_x: 226,
           center_y: 341,
           x: 16,
@@ -142,7 +143,7 @@ WatchFace({
 
         heart_rate_pointer_widget_array.push(
           hmUI.createWidget(hmUI.widget.IMG_POINTER, {
-            src: small_point_array[i],
+            src: arrow_small_array[i],
             center_x: 130,
             center_y: 227,
             x: 15,
@@ -156,7 +157,7 @@ WatchFace({
 
         battery_pointer_widget_array.push(
           hmUI.createWidget(hmUI.widget.IMG_POINTER, {
-            src: small_point_array[i],
+            src: arrow_small_array[i],
             center_x: 322,
             center_y: 228,
             x: 15,
@@ -202,7 +203,7 @@ WatchFace({
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
-    normal_analog_clock_normal_hour_p_img = hmUI.createWidget(hmUI.widget.TIME_POINTER, {
+    hour_p_img = hmUI.createWidget(hmUI.widget.TIME_POINTER, {
       hour_path: 'ah.png',
       hour_centerX: 227,
       hour_centerY: 227,
@@ -220,7 +221,7 @@ WatchFace({
       show_level: hmUI.show_level.ONLY_AOD,
     });
 
-    normal_analog_clock_normal_minute_p_img = hmUI.createWidget(hmUI.widget.TIME_POINTER, {
+    minute_p_img = hmUI.createWidget(hmUI.widget.TIME_POINTER, {
       minute_path: 'am.png',
       minute_centerX: 227,
       minute_centerY: 227,
@@ -238,7 +239,7 @@ WatchFace({
       show_level: hmUI.show_level.ONLY_AOD,
     });
 
-    normal_analog_clock_normal_second_p_sw_img = hmUI.createWidget(hmUI.widget.TIME_POINTER, {
+    second_p_shadow_img = hmUI.createWidget(hmUI.widget.TIME_POINTER, {
       second_path: 'assh.png',
       second_centerX: 233,
       second_centerY: 235,
@@ -247,7 +248,7 @@ WatchFace({
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
-    normal_analog_clock_normal_second_p_img = hmUI.createWidget(hmUI.widget.TIME_POINTER, {
+    second_p_img = hmUI.createWidget(hmUI.widget.TIME_POINTER, {
       second_path: 'as.png',
       second_centerX: 227,
       second_centerY: 227,
@@ -256,7 +257,7 @@ WatchFace({
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
-    normal_analog_clock_smooth_hour_p_img = hmUI.createWidget(hmUI.widget.IMG, {
+    smooth_hour_p_img = hmUI.createWidget(hmUI.widget.IMG, {
       x: 0,
       y: 0,
       w: deviceInfo.width,
@@ -272,7 +273,7 @@ WatchFace({
 
 
 
-    normal_analog_clock_smooth_minute_p_img = hmUI.createWidget(hmUI.widget.IMG, {
+    smooth_minute_p_img = hmUI.createWidget(hmUI.widget.IMG, {
       x: 0,
       y: 0,
       w: deviceInfo.width,
@@ -286,7 +287,7 @@ WatchFace({
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
 
-    normal_analog_clock_smooth_second_p_sw_img = hmUI.createWidget(hmUI.widget.IMG, {
+    smooth_second_p_shadow_img = hmUI.createWidget(hmUI.widget.IMG, {
       x: 0,
       y: 0,
       w: deviceInfo.width,
@@ -300,7 +301,7 @@ WatchFace({
       show_level: hmUI.show_level.ONLY_NORMAL,
     });
    
-    normal_analog_clock_smooth_second_p_img = hmUI.createWidget(hmUI.widget.IMG, {
+    smooth_second_p_img = hmUI.createWidget(hmUI.widget.IMG, {
       x: 0,
       y: 0,
       w: deviceInfo.width,
@@ -322,7 +323,7 @@ WatchFace({
       }
     }
 
-    setVisibility(skin_number);
+    setVisibility(color_number);
 
     hmUI.createWidget(hmUI.widget.BUTTON, {
       x: 86,
@@ -440,13 +441,13 @@ WatchFace({
       show_level: hmUI.show_level.ONLY_NORMAL,
       click_func: () => {
         short_vibro()
-        skin_number++;
-        if(skin_number>(color_array.length-1)) {
-          skin_number = 0
+        color_number++;
+        if(color_number>=color_array.length) {
+          color_number = 0
         }
-        hmFS.SysProSetInt('skin_number',skin_number);
-        normal_image_img.setProperty(hmUI.prop.SRC,color_array[skin_number]);
-        setVisibility(skin_number); 
+        hmFS.SysProSetInt('color_number',color_number);
+        color_img.setProperty(hmUI.prop.SRC,color_array[color_number]);
+        setVisibility(color_number); 
       }
     });
 
@@ -462,11 +463,11 @@ WatchFace({
       click_func: () => {
         short_vibro();
         back_number++;
-        if(back_number>back_cover_array.length-1) {
+        if(back_number>background_array.length-1) {
           back_number = 0
         }
         hmFS.SysProSetInt('back_number',back_number);
-        back_cover_img.setProperty(hmUI.prop.SRC,back_cover_array[back_number]);
+        background_img.setProperty(hmUI.prop.SRC,background_array[back_number]);
       }
     });
 
@@ -481,8 +482,8 @@ WatchFace({
         anim_key: 'angle',
         anim_status: 1,
       }
-      normal_analog_clock_smooth_second_p_img.setProperty(hmUI.prop.ANIM, secAnim);
-      normal_analog_clock_smooth_second_p_sw_img.setProperty(hmUI.prop.ANIM, secAnim);
+      smooth_second_p_img.setProperty(hmUI.prop.ANIM, secAnim);
+      smooth_second_p_shadow_img.setProperty(hmUI.prop.ANIM, secAnim);
     }
 
     function time_update(updateHour = false, updateMinute = false) {
@@ -495,13 +496,13 @@ WatchFace({
         let normal_fullAngle_hour = 360;
         if (normal_hour > 11) normal_hour -= 12;
         let normal_angle_hour = 0 + normal_fullAngle_hour*normal_hour/12 + (normal_fullAngle_hour/12)*minute/60;
-        if (normal_analog_clock_smooth_hour_p_img) normal_analog_clock_smooth_hour_p_img.setProperty(hmUI.prop.ANGLE, normal_angle_hour);
+        if (smooth_hour_p_img) smooth_hour_p_img.setProperty(hmUI.prop.ANGLE, normal_angle_hour);
       };
 
       if (updateMinute) {
         let normal_fullAngle_minute = 360;
         let normal_angle_minute = 0 + normal_fullAngle_minute*(minute + second/60)/60;
-        if (normal_analog_clock_smooth_minute_p_img) normal_analog_clock_smooth_minute_p_img.setProperty(hmUI.prop.ANGLE, normal_angle_minute);
+        if (smooth_minute_p_img) smooth_minute_p_img.setProperty(hmUI.prop.ANGLE, normal_angle_minute);
       };
 
     };
@@ -525,8 +526,8 @@ WatchFace({
       };  
 
       let secAngle = 0 + (360*6)*(timeSensor.second + ((timeSensor.utc % 1000) / 1000))/360;
-      normal_analog_clock_smooth_second_p_img.setProperty(hmUI.prop.ANGLE, secAngle);
-      normal_analog_clock_smooth_second_p_sw_img.setProperty(hmUI.prop.ANGLE, secAngle);
+      smooth_second_p_img.setProperty(hmUI.prop.ANGLE, secAngle);
+      smooth_second_p_shadow_img.setProperty(hmUI.prop.ANGLE, secAngle);
       if (screenType == hmSetting.screen_type.WATCHFACE) {
         if (!normal_timerUpdateSecSmooth) {
           let duration = 0;
@@ -574,14 +575,14 @@ WatchFace({
     }
 
     function setSecondVisibility(mode){
-      normal_analog_clock_smooth_hour_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_SMOOTH);
-      normal_analog_clock_smooth_minute_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_SMOOTH);
-      normal_analog_clock_smooth_second_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_SMOOTH);
-      normal_analog_clock_smooth_second_p_sw_img.setProperty(hmUI.prop.VISIBLE,mode==SM_SMOOTH);
-      normal_analog_clock_normal_hour_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_STEP || mode==SM_WITHOUT);
-      normal_analog_clock_normal_minute_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_STEP || mode==SM_WITHOUT);
-      normal_analog_clock_normal_second_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_STEP);
-      normal_analog_clock_normal_second_p_sw_img.setProperty(hmUI.prop.VISIBLE,mode==SM_STEP);
+      smooth_hour_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_SMOOTH);
+      smooth_minute_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_SMOOTH);
+      smooth_second_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_SMOOTH);
+      smooth_second_p_shadow_img.setProperty(hmUI.prop.VISIBLE,mode==SM_SMOOTH);
+      hour_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_STEP || mode==SM_WITHOUT);
+      minute_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_STEP || mode==SM_WITHOUT);
+      second_p_img.setProperty(hmUI.prop.VISIBLE,mode==SM_STEP);
+      second_p_shadow_img.setProperty(hmUI.prop.VISIBLE,mode==SM_STEP);
       delegate();
     }
  
